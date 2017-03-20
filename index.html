@@ -1,0 +1,59 @@
+<<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+
+	<script>
+
+		function addNumbers(...numbers) {  //this syntax will allow for any number of arguments when the function is called
+			return numbers.reduce((sum, number) => {
+				return sum + number;
+			}, 0);
+		}
+
+		addNumbers(1,2,3,4,5);
+		addNumbers(1,2,3,4,5,6,7);
+		addNumbers(1,2,3,4,5,6,7,8,9,10);
+
+		const defaultColors = ['red', 'green'];
+		const userFavoriteColors = ['orange', 'yellow'];
+		const fallColors = ['fire red', 'fall orange'];
+
+		[ ...defaultColors, ...userFavoriteColors ]; //Spread operator. This line will literally act like a concat() and join the two arrays.
+		// ...defaultColors === take all of the elements out of the array listed after the spread and put them into the new array
+
+		[ ...fallColors, ...defaultColors, ...userFavoriteColors ]; // example of how you can just add new data with spread
+		[ 'blue', ...fallColors, ...defaultColors, ...userFavoriteColors ]; //even further, add a hard element with your spread
+
+		function validateShoppingList(...items) {
+			if (items.indexOf('milk') < 0) {
+				return [ 'milk', ...items ];
+			}
+
+			return items;
+		}
+
+		// in the function above. It validates if milk is not on the list. if so it will add milk with the rest of the items you call below.
+
+		validateShoppingList('bread', 'oranges', 'eggs');
+
+
+		const MathLibrary = {
+			calculateProduct(...rest) {
+				console.log('Please use multiply method');
+				return this.multiply(...rest)
+			},
+			multiply(a, b) {
+				return a * b;
+			}
+		};
+
+	</script>
+
+</body>
+</html>
